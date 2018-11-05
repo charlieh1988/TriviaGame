@@ -21,7 +21,7 @@ var animationSetup = false;
    buttonThree = document.getElementById('buttonThree'),
    buttonFour = document.getElementById('buttonFour'),
    buttonArray = [buttonOne, buttonTwo, buttonThree, buttonFour],
-   modal_window = document.getElementById('modal_window')
+   modal_window = document.getElementById('modal_window'),
    gameIndex = 0,
    actualScore = 0,
    timerIndex = 8,
@@ -38,7 +38,12 @@ var animationSetup = false;
     'What was the name of the whale in the 1993 movie, "Free Willy"?',
     'What was the name of the monkey in the Disney movie "Aladdin"?',
     'Which 90’s movie soundtrack is the best-selling soundtrack of all time?',
-    'Which 90’s movie featured the songs “My Guy (My God)” and “I Will Follow Him”?'
+    'Which 90’s movie featured the songs “My Guy (My God)” and “I Will Follow Him”?',
+    'In which year were the Academy Awards, or "Oscars", first presented?',
+    'Which classic thriller movie stars Roy Schieder as the police chief Martin Brody?',
+    'Which 1952 musical comedy tells the story of three performers making the transition from silent movies to "talkies"?',
+
+
    ],
    answers = [
     ['Meryl Streep', 'Hally Berry', 'Katharine Hepburn', 'Helen Mirren'],
@@ -48,6 +53,10 @@ var animationSetup = false;
     ['Donkey Kong', 'Monkey', 'Abu', 'Leslie'],
     ['Flashdance', 'Dirty Dancing', 'Titanic', 'The Bodyguard'],
     ['Bible 101', 'God and Me', 'Sisters Act', 'Jesus Christ'],
+    ['1930', '1928', '1929', '1919'],
+    ['The Shining', 'Cops', 'Jaws', 'The Town'],
+    ['Casablanca', 'Singin In The Rain', 'Birds', 'Roman Holiday'],
+
     
    ],
    correctAnswers = [2,0,1,3,2,3,2,2,1,1],
@@ -89,7 +98,6 @@ var animationSetup = false;
     // Set the score to zero
     scoreSpan[0].textContent = actualScore;
     timerSpan[0].textContent = timerIndex;
-
     startAnimation.to([startButton, title], 1, {alpha:0});
     startAnimation.to([startButton, title], 0.1, {css:{display:'none'}});
     startAnimation.to([gameHeader, gameChoices], 0.1, {css:{display:'block'}, onComplete:self.fireOffGameLogic});
@@ -132,7 +140,7 @@ var animationSetup = false;
    self.updateClock = function() {
     timerIndex--;
     if (timerIndex == -1) {
-      timerIndex = 23;
+      timerIndex = 8;
       gameIndex++;
     } 
  
@@ -141,7 +149,7 @@ var animationSetup = false;
       // end the game
       self.runEndOfGame();
       return;
-    } else if(timerIndex == 23){
+    } else if(timerIndex == 8){
       self.setupUserInterfaceWithData();
     }
     // Display updated time
